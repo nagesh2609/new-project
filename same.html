@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U2C3 Mock</title>
+    <style>
+        #report {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(auto, auto);
+        }
+
+        div {}
+    </style>
+</head>
+
+<body>
+    <form>
+        <select id="month">
+            <option value="January">JANUARY</option>
+            <option value="February">FEB</option>
+            <option value="MARCH">MARCH</option>
+            <option value="APRIL">APRIL</option>
+            <option value="MAY">MAY</option>
+            <option value="JUNE">JUNE</option>
+            <option value="JULY">JULY</option>
+            <option value="AUGUST">AUGUST</option>
+            <option value="SEPETEMBER">SEPETEMBER</option>
+            <option value="OCTOBER">OCTOBER</option>
+            <option value="NOVEMBER">NOVEMBER</option>
+            <option value="DECEMBER">DECEMBER</option>
+        </select>
+
+        <input id="income" type="number" placeholder="Enter Income" />
+
+        <input id="expense" type="number" placeholder="Enter expense" />
+
+        <input type="submit" />
+    </form>
+
+    <div id="report">
+        <div>
+            <!-- <h1></h1>
+            <p></p>
+            <p></p>
+            <h3></h3>
+            <button></button> -->
+        </div>
+        <!-- Append your cards here -->
+    </div>
+</body>
+
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit", myfunction)
+
+    function myfunction() {
+        event.preventDefault();
+        var month = document.querySelector("#month").value;
+
+        var Income = document.querySelector("#income").value;
+
+        var Expense = document.querySelector("#expense").value;
+
+        var div = document.createElement("div");
+
+        var h1tag = document.createElement("h1");
+        h1tag.innrText = month;
+
+        var ptag1 = document.createElement("p");
+        ptag1.innerText = Income;
+
+        var ptag2 = document.createElement("p");
+        ptag2.innerText = Expense;
+
+        var h3tag = document.createElement("h3");
+        if (Income < Expense) {
+            h3tag.innerText = "Debt";
+            h3tag.style.color = "red";
+
+        }
+        else if (Income > Expense) {
+            h3tag.innerText = "Save";
+            h3tag.style.color = "green";
+
+        }
+        else {
+            h3tag.innerText = "Break";
+            h3tag.style.color = "yellow"
+
+        }
+
+        var btn = document.createElement("button")
+        btn.innerText = "DELETE"
+        btn.addEventListener("click", yourfunction);
+
+        div.append(h1tag, ptag1, ptag2, h3tag, btn);
+        document.querySelector("#report").append(div)
+
+    }
+    function yourfunction() {
+        event.target.parentNode.remove();
+    }
+
+</script>
